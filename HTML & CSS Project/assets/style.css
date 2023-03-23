@@ -1,5 +1,5 @@
 /* Google font imports */
-@import url("https://fonts.googleapis.com/css?family=Inter");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* Variables */
 :root {
@@ -80,8 +80,10 @@ nav {
 /* Main section */
 main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto auto;
+    column-gap: 1.5rem;
+
 }
 
 #most-recent{
@@ -99,7 +101,7 @@ main {
 #most-recent .most-recent--itm {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-column: 1/3;
 }
 
 
@@ -108,7 +110,16 @@ main {
     width: 90%;
 }
 
-.most-recent--itm .most-recent-lead {
+.title {
+    grid-column: 1/2;
+    margin: 0.5em 0.5em 0.5em 0;
+    font-weight: 800;
+    font-size: 3rem;
+    line-height: 3rem;
+    color: var(--dark-blue);  
+  }
+
+.most-recent--itm .most-recent--lead {
     grid-column: 2/2;
     margin-top: 1.5rem;
 }
@@ -132,36 +143,81 @@ main {
     margin-top: 2rem;
 }
 
-
-
 #recent-posts {
-    background-color: $blue-dark;
-    padding: 0 1.25rem 3.5rem 1.25rem;
+    background-color: var(--dark-blue);
+    padding: 2rem 1rem;
     grid-column: 3 / 4;
     grid-row: 1 / 3;
 }
 
-#trending-posts {
-    display: flex;
-    gap: 0.875rem;
-    margin: 1rem 0;
+.recent-posts--itm {
+    padding: 1rem 0 1rem 0;
 }
 
-.title {
-    grid-column: 1/2;
-    margin: 0.5em 0.5em 0.5em 0;
-    font-weight: 800;
-    font-size: 2.5rem;
-    line-height: 2.5rem;
-    color: var(--dark-blue);  
-  }
-
-
 #recent-posts h2{
-    color: var(--soft-orange)
+    color: var(--soft-orange);
 }
 
 #recent-posts hr {
     border-color: var(--dark-grayblue);
 }
 
+.recent-posts--itm p {
+    color: var(--gray-blue)
+}
+
+.recent-posts--itm h3 {
+    padding-bottom: 0.6rem;
+}
+
+.recent-posts--itm a {
+    text-decoration: none;
+    transition: color 0.5s ease;
+    color: var(--off-white)
+}
+
+.recent-posts--itm a:hover {
+    color: var(--soft-orange)
+}
+
+#trending-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column: 1/-1;
+    margin-top: 3rem;
+    gap: 1rem;
+    
+}
+
+.trending-post--itm {
+    display: flex;
+    gap: 1rem;
+}
+
+#trending-posts img {
+    width :6rem;
+    height: 8rem;
+}
+
+.trending-post--itm h2 {
+    color: var(--gray-blue);
+    padding-bottom: 0.65rem;
+}
+
+.trending-post--itm a {
+    text-decoration: none;
+    transition: color 0.5s ease;
+    color: var(--dark-blue);
+}
+
+.trending-post--itm a:hover {
+    color: var(--soft-red);
+}
+
+.trending-post--itm h3 {
+    padding-bottom: 0.65rem;
+}
+
+.trending-post--itm p {
+    color: var(--dark-grayblue);
+}
