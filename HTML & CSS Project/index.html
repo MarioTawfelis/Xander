@@ -5,25 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
   <link rel="stylesheet" href="./assets/style.css"/>
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>News homepage</title>
 </head>
 <body>
-    <nav>
+    <nav>      
         <img class="logo" src="./assets/images/logo.svg">
-        <ul class="navlinks">
-            <li><a href="#" target="_blank">Home</a>
-            <li><a href="#" target="_blank">New</a>
-            <li><a href="#" target="_blank">Popular</a>
-            <li><a href="#" target="_blank">Trending</a>
-            <li><a href="#" target="_blank">Categories</a>
-            
-        </ul>
+        <div class="navlink-wrapper-lg">
+            <ul class="navlinks">
+                <li><a href="#" target="_blank">Home</a></li>
+                <li><a href="#" target="_blank">New</a></li>
+                <li><a href="#" target="_blank">Popular</a></li>
+                <li><a href="#" target="_blank">Trending</a></li>
+                <li><a href="#" target="_blank">Categories</a></li>
+            </ul>
+        </div>
+      
+        <div class="hamburger">
+            <button id="menu-toggle" class="menu-toggle" aria-label="Open the menu">
+              <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="sidebar">
+            <div class="close-icon">
+              <p class="sr-only">Close Sidebar</p>
+              <button id="sidebar-close">
+                <i class="fa-solid fa-times"></i>
+              </button>
+            </div>
+            <ul class="navlinks-mobile">
+                <li><a href="#" target="_blank">Home</a></li>
+                <li><a href="#" target="_blank">New</a></li>
+                <li><a href="#" target="_blank">Popular</a></li>
+                <li><a href="#" target="_blank">Trending</a></li>
+                <li><a href="#" target="_blank">Categories</a></li>
+            </ul>
+        </div>
     </nav>
     <main class="container">
         <section id="most-recent">
-            <img src="./assets/images/image-web-3-desktop.jpg">
-
+            <picture>
+                <source media="(min-width:1440px)" srcset="./assets/images/image-web-3-desktop.jpg" alt="Puzzle">
+                <source media="(min-width:375px)" srcset="./assets/images/image-web-3-mobile.jpg" alt="Puzzle">
+                <img src="./assets/images/image-web-3-desktop.jpg" alt="Puzzle">
+            </picture>
             <div class="most-recent--itm">
                 <div class="most-recent--title">
                     <h1 class="title">The Bright Future of Web 3.0?</h1>
@@ -104,5 +129,6 @@
             </div>                 
         </section>
     </main>
+    <script src="./assets/script.js"></script>
 </body>
 </html>

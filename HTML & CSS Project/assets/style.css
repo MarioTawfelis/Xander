@@ -27,7 +27,7 @@ html {
 
 body {
     font-family: var(--font-family);
-    padding: 7rem;
+    padding: 5rem 15rem;
     margin: 0;
     background-color: var(--off-white);
 }
@@ -51,7 +51,7 @@ ul {
 /* Navbar */
 nav {
     font-family: var(--font-family);
-    padding-bottom: 5rem;
+    padding-bottom: 4rem;
 }
   
 .navlinks {
@@ -64,6 +64,10 @@ nav {
     margin: 0;
     padding: 0;
 }
+
+.navlink-wrapper-lg {
+    display: block;
+}
   
 .navlinks li a {
     text-decoration: none;
@@ -75,7 +79,15 @@ nav {
 .navlinks li a:hover {
     color: var(--soft-red);
 }
-  
+
+.sidebar,
+.navlinks-mobile {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+}
 
 /* Main section */
 main {
@@ -124,7 +136,7 @@ main {
     margin-top: 1.5rem;
 }
 
-.most-recent--itm p{
+.most-recent--itm p{    
     grid-column: 2/3;
     font-size: var(--font-size);
     color: var(--dark-grayblue);
@@ -141,6 +153,10 @@ main {
     border: 0;
     padding: 1rem 2rem;
     margin-top: 2rem;
+}
+
+.most-recent--itm button:hover {
+    background-color: var(--dark-blue)
 }
 
 #recent-posts {
@@ -220,4 +236,88 @@ main {
 
 .trending-post--itm p {
     color: var(--dark-grayblue);
+}
+
+
+@media screen and (max-width:950px){
+    nav {
+        padding-bottom: 1rem;
+    }
+
+    .navlinks-mobile {
+        margin: 1.2rem 0;
+    }
+
+    .navlink-wrapper-lg {
+        display: none;
+    }
+
+    .menu-toggle {
+        font-size: 2.75rem;
+        color: var(--dark-blue);
+        margin: 1rem 0 1rem 1rem;
+        border: none;
+        background-color: var(--off-white);
+      }
+
+      .sidebar {
+        position: absolute;
+        transform: translateX(-200%);
+        transition: transform 0.4s ease;
+        width: 200px;
+        top: 0;
+        bottom: 0;
+        background-color: white;
+        padding: 1rem 0 0 1rem;
+      }
+      
+      .show-sidebar {
+        transform: translate(0);
+      }
+
+      .hamburger {
+        display: block;
+      }
+      
+      #sidebar-close {
+        outline: none;
+        border: none;
+        background: transparent;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 1rem 1rem 0 0;
+        font-size: 2rem;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto 1fr;
+      }
+
+      #most-recent {
+        grid-row: 1/2;
+      }
+
+      #recent-posts {
+        grid-row: 2/3;
+        grid-column: 1/-1;
+      }
+
+      #trending-posts {
+        grid-row: 3/4;
+      }
+
+      #most-recent .most-recent--itm{
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 4rem;
+      }
+
+      .most-recent--itm h1{
+        padding: 1rem 0 1rem 0;
+        margin:0;
+      }
+
 }
