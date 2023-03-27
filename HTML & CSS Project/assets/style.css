@@ -50,8 +50,16 @@ ul {
 
 /* Navbar */
 nav {
+    /* display: flex; */
     font-family: var(--font-family);
     padding-bottom: 4rem;
+    /* flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center; */
+}
+
+.navbar-flex-wrapper {
+    display: flex;
 }
   
 .navlinks {
@@ -80,6 +88,7 @@ nav {
     color: var(--soft-red);
 }
 
+.logo-mob,
 .sidebar,
 .navlinks-mobile {
     display: none;
@@ -240,12 +249,56 @@ main {
 
 
 @media screen and (max-width:950px){
+    body{
+        padding: 6rem;
+    }
+
+    .navbar-flex-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .logo-mob {
+        display: block;
+    }
+
     nav {
         padding-bottom: 1rem;
     }
 
+
     .navlinks-mobile {
-        margin: 1.2rem 0;
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        background: var(--off-white);
+        list-style-type: none;
+
+    }
+
+    .navlinks-mobile li {
+        padding-bottom: 1rem;
+    }
+
+    .navlinks-mobile li a {
+        text-decoration: none;
+        transition: color 0.5s ease;
+        color: var(--dark-grayblue);
+        font-size: 1.15rem;
+    }
+
+
+    .sidebar, .navlinks-mobile {
+        display: block;
     }
 
     .navlink-wrapper-lg {
@@ -263,16 +316,16 @@ main {
       .sidebar {
         position: absolute;
         transform: translateX(-200%);
-        transition: transform 0.4s ease;
+        transition: transform 0.6s ease;
         width: 200px;
         top: 0;
         bottom: 0;
         background-color: white;
-        padding: 1rem 0 0 1rem;
+        padding: 5rem;
       }
       
       .show-sidebar {
-        transform: translate(0);
+        transform: translateX(0%);
       }
 
       .hamburger {
@@ -291,7 +344,7 @@ main {
       }
 
       main {
-        display: grid;
+        /* display: grid; */
         grid-template-columns: 1fr;
         grid-template-rows: 1fr auto 1fr;
       }

@@ -10,8 +10,9 @@
 </head>
 <body>
     <nav>      
-        <img class="logo" src="./assets/images/logo.svg">
+        
         <div class="navlink-wrapper-lg">
+            <img class="logo" src="./assets/images/logo.svg">
             <ul class="navlinks">
                 <li><a href="#" target="_blank">Home</a></li>
                 <li><a href="#" target="_blank">New</a></li>
@@ -21,25 +22,29 @@
             </ul>
         </div>
       
-        <div class="hamburger">
-            <button id="menu-toggle" class="menu-toggle" aria-label="Open the menu">
-              <i class="fa-solid fa-bars" aria-hidden="true"></i>
-            </button>
-          </div>
-          <div class="sidebar">
-            <div class="close-icon">
-              <p class="sr-only">Close Sidebar</p>
-              <button id="sidebar-close">
-                <i class="fa-solid fa-times"></i>
-              </button>
+
+        <div class="navbar-flex-wrapper">
+            <img class="logo-mob" src="./assets/images/logo.svg">
+            <div class="hamburger">
+                <button id="menu-toggle" class="menu-toggle" aria-label="Open the menu">
+                  <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="sidebar">
+                <div class="close-icon">
+                  <p class="sr-only">Close Sidebar</p>
+                  <button id="sidebar-close">
+                    <i class="fa-solid fa-times"></i>
+                  </button>
+                </div>
+                <ul class="navlinks-mobile">
+                    <li><a href="#" target="_blank">Home</a></li>
+                    <li><a href="#" target="_blank">New</a></li>
+                    <li><a href="#" target="_blank">Popular</a></li>
+                    <li><a href="#" target="_blank">Trending</a></li>
+                    <li><a href="#" target="_blank">Categories</a></li>
+                </ul>
             </div>
-            <ul class="navlinks-mobile">
-                <li><a href="#" target="_blank">Home</a></li>
-                <li><a href="#" target="_blank">New</a></li>
-                <li><a href="#" target="_blank">Popular</a></li>
-                <li><a href="#" target="_blank">Trending</a></li>
-                <li><a href="#" target="_blank">Categories</a></li>
-            </ul>
         </div>
     </nav>
     <main class="container">
