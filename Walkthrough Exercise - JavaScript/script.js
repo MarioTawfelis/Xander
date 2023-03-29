@@ -7,6 +7,18 @@ const searchInput = getElement('#search')
 const btnContainer = getElement('#btn-container')
 const productContainer = getElement('#productslist-container')
 
+// Attaching event listener for filtering by search terms
+searchInput.addEventListener('input', (e) => {
+    filterProducts(e.target.value)
+})
+
+// Event listener for category buttons
+document.addEventListener('click', (e) => {
+    if(e.target.classList.contains('category-btn')){
+        filterProducts(e.target.textContent.toLowerCase())
+    }
+})
+
 // Display list of products
 // Argument: An array of products
 function displayProducts(products) {
@@ -57,18 +69,22 @@ function createBtn(category) {
 // Handle input
 // Argument: a string representation of a category, used to compare against categories of products
 function filterProducts(value) {
+    if(value === 'all'){
+        displayProducts(data.products)
+        return
+    }
+
     const filteredProducts = data.products.filter(product => {
-        return product.category.includes(value)
+        if(value.split('').length > 1){
+            return product.category.includes(value.split(" ").join("-"))
+        }else{
+            return product.category.includes(value)
+        }
+        
     })
 
     displayProducts(filteredProducts)
 }
-
-
-// Attaching event listener for filtering by search terms
-searchInput.addEventListener('input', (e) => {
-    filterProducts(e.target.value)
-})
 
 // Grab element from the DOM
 // Argument: a string representation of the element's ID
