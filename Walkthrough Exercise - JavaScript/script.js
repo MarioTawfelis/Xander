@@ -1,3 +1,8 @@
+// Global variables
+const searchInput = getElement('#search')
+const btnContainer = getElement('#btn-container')
+const productContainer = getElement('#productslist-container')
+
 // Display list of products
 // Argument: An array of products
 function displayProducts(products) {}
@@ -12,7 +17,15 @@ function filterProducts(value) {}
 
 // Grab element from the DOM
 // Argument: a string representation of the element's ID
-function getElement(identifier) {}
+function getElement(identifier) {
+    const el = document.querySelector(identifier)
+
+    if(!el){
+        throw new Error("Could not find the specified element.")
+    }else{
+        return el
+    }
+}
 
 // Display category buttons
 // Argument: An array of products
