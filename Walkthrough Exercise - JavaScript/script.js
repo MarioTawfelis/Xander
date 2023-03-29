@@ -42,6 +42,12 @@ function createBtn(category) {}
 // Argument: a string representation of a category, used to compare against categories of products
 function filterProducts(value) {}
 
+
+// Attaching event listener for filtering by search terms
+searchInput.addEventListener('input', (e) => {
+    console.log(e.target.value)
+})
+
 // Grab element from the DOM
 // Argument: a string representation of the element's ID
 function getElement(identifier) {
