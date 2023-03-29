@@ -10,28 +10,34 @@ const productContainer = getElement('#productslist-container')
 // Display list of products
 // Argument: An array of products
 function displayProducts(products) {
-    const productList = products.map(product => {
-        const {title, price, brand, rating, thumbnail} = product
 
-        return   `  <div class='product-wrapper'>
-                        <div class='rating'>
-                            <p>Rating: ${rating}</p>
-                        </div>
-                        <div class='product-info'>
-                            <div class='product-img'>
-                                <img src='${thumbnail}' alt='${title}'/>
+    if (!products || products.length == 0) {
+        return productContainer.innerHTML = "<h2 class='no-results'>No results</h2>"
+    }else{
+        const productList = products.map(product => {
+            const {title, price, brand, rating, thumbnail} = product
+    
+            return   `  <div class='product-wrapper'>
+                            <div class='rating'>
+                                <p>Rating: ${rating}</p>
                             </div>
-                            <div class='product-detail'>
-                                <h2>${title}</h2>
-                                <p>${brand}</p>
-                                <p>${price}.00</p>
+                            <div class='product-info'>
+                                <div class='product-img'>
+                                    <img src='${thumbnail}' alt='${title}'/>
+                                </div>
+                                <div class='product-detail'>
+                                    <h2>${title}</h2>
+                                    <p>${brand}</p>
+                                    <p>${price}.00</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `
-    }).join('')
+                    `
+        }).join('')
+    
+        productContainer.innerHTML = productList
+    }
 
-    productContainer.innerHTML = productList
 }
 
 // Create a category button
@@ -40,12 +46,18 @@ function createBtn(category) {}
 
 // Handle input
 // Argument: a string representation of a category, used to compare against categories of products
-function filterProducts(value) {}
+function filterProducts(value) {
+    const filteredProducts = data.products.filter(product => {
+        return product.category.includes(value)
+    })
+
+    displayProducts(filteredProducts)
+}
 
 
 // Attaching event listener for filtering by search terms
 searchInput.addEventListener('input', (e) => {
-    console.log(e.target.value)
+    filterProducts(e.target.value)
 })
 
 // Grab element from the DOM
