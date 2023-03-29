@@ -88,7 +88,33 @@ function displayCategories(products) {}
 
 // Gather all categories from products data
 // Argument: An array of products
-function parseCategories(products) {}
+function parseCategories(products) {
+    let categories = products.reduce((arr, product) => {
+        if(!arr.includes(product.category)){
+            arr.push(product.category)
+        }
+    
+        return arr
+    },[])
+
+    categories = categories.map(category => {
+        if(category.includes('-')){
+            const splitCategory = category
+                .split('-')
+                .map((str) => {
+                    return str.charAt(0).toUpperCase() + str.substr(1)
+                })
+                .join(" ")
+
+            return splitCategory
+        }
+
+        return category.charAt(0).toUpperCase() + str.substr(1)
+    })
+}
+
+parseCategories(data.products);
+
 
 // Display initial products list and category buttons
 // No arguments
