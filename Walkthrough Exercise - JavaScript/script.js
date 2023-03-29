@@ -84,42 +84,49 @@ function getElement(identifier) {
 
 // Display category buttons
 // Argument: An array of products
-function displayCategories(products) {}
+function displayCategories(products) {
+    const parsedCategories = parseCategories(products)
+  
+    btnContainer.appendChild(createBtn("All"))
+  
+    parsedCategories.forEach((category) => {
+      btnContainer.appendChild(createBtn(category))
+    });
+  }
 
 // Gather all categories from products data
 // Argument: An array of products
 function parseCategories(products) {
     let categories = products.reduce((arr, product) => {
-        if(!arr.includes(product.category)){
-            arr.push(product.category)
-        }
-    
-        return arr
-    },[])
-
-    categories = categories.map(category => {
-        if(category.includes('-')){
-            const splitCategory = category
-                .split('-')
-                .map((str) => {
-                    return str.charAt(0).toUpperCase() + str.substr(1)
-                })
-                .join(" ")
-
-            return splitCategory
-        }
-
-        return category.charAt(0).toUpperCase() + str.substr(1)
-    })
-}
-
-parseCategories(data.products);
-
+      if (!arr.includes(product.category)) {
+        arr.push(product.category)
+      }
+  
+      return arr
+    }, [])
+  
+    categories = categories.map((category) => {
+      if (category.includes("-")) {
+        const splitCategory = category
+          .split("-")
+          .map((str) => {
+            return str.charAt(0).toUpperCase() + str.substr(1)
+          })
+          .join(" ");
+        return splitCategory
+      }
+  
+      return category.charAt(0).toUpperCase() + category.substr(1)
+    });
+  
+    return categories
+  }
 
 // Display initial products list and category buttons
 // No arguments
 function init() {
     displayProducts(data.products)
+    displayCategories(data.products)
 }
 
 
