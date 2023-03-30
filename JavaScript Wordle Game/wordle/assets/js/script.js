@@ -54,12 +54,20 @@ async function init() {
 
     document.addEventListener("keydown", function(event) {
         const action = event.key
-        console.log(action)
+        
+        if (action == "Enter") {
+            handleCommit()
+        } else if (action == "Backspace") {
+            handleBackspace()
+        } else if (isLetter(action)) {
+           addLetter(action)
+        } else {}
     })
 }
 
 function isLetter(action) {
     // Check if keystroke is indeed a letter
+    return /^[a-zA-Z]/.test(action)
 }
 
 function makeMap(array) {
