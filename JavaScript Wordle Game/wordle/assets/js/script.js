@@ -52,12 +52,16 @@ async function init() {
         // Make map of words
         let guessParts = currentGuess.split('')
 
+        let wordMap = makeMap(wordParts)
+
         // Mark 'correct', 'close', 'wrong' squares
         for (let i=0; i<ANSWER_LENGTH; i++) {
             if (guessParts[i] === wordParts[i])  {
                 letters[currentRow * ANSWER_LENGTH + i].classList.add('correct')
-            } else if (wordParts.includes(guessParts[i])) {
+                wordMap[guessParts[i]]--
+            } else if (wordParts.includes(guessParts[i]) && wordMap[guessParts[i]] > 0) {
                 letters[currentRow * ANSWER_LENGTH + i].classList.add('close')
+                wordMap[guessParts[i]]--
             } else {
                 letters[currentRow * ANSWER_LENGTH + i].classList.add('wrong')
             }
@@ -73,9 +77,16 @@ async function init() {
         //     }
         // }
 
-        
-
         // Did the user win or lose?
+        if (currentGuess === wordOfTheDay) {
+            animate()
+            message.textContent = "You Win!"
+            message.classList.add('complete')
+        } else if (currentRow === 5) {
+            animate()
+            message.innerHTML = `You lose! The word was <span class='wotd'>${wordOfTheDay}</span>`
+            message.classList.add('complete')
+        }
 
         // set currentGuess to empty string
         currentGuess = ''
@@ -126,6 +137,17 @@ function isLetter(action) {
 
 function makeMap(array) {
     // Create object of characters along with amount of occurrences in word.
+    const obj = {}
+
+    for (let i=0; i<array.length; i++) {
+        if (obj[array[i]]) {
+            obj[array[i]]++
+        } else {
+            obj[array[i]] = 1
+        }
+    }
+
+    return obj
 }
 
 
