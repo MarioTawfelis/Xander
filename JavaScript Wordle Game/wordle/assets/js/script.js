@@ -24,6 +24,10 @@ async function init() {
      * Create array of characters
      */
 
+    const url = 'https://words.dev-apis.com/word-of-the-day'
+    const res = await fetch(url)
+    const data = await res.json()
+    let wordOfTheDay = data.word.toUpperCase()
 
     function addLetter(letter) {
         // check if buffer is less than 5 characters
@@ -36,7 +40,7 @@ async function init() {
             currentGuess = currentGuess.substring(0, currentGuess.length -1) + letter
         }
 
-        letters[currentGuess.length -1].textContent = letter
+        letters[currentRow * ANSWER_LENGTH + currentGuess.length -1].textContent = letter
     }
 
     function handleCommit(){
@@ -50,6 +54,9 @@ async function init() {
 
         // set currentGuess to empty string
         // increment currentRow
+
+        currentGuess = ''
+        currentRow++
 
         
 
@@ -82,7 +89,7 @@ async function init() {
         } else if (action == "Backspace") {
             handleBackspace()
         } else if (isLetter(action)) {
-           addLetter(action)
+           addLetter(action.toUpperCase())
         } else {}
     })
 }
