@@ -1,5 +1,8 @@
 // Grab DOM elements
 
+const message = document.getElementById("success-msg")
+const letters = document.getElementsByClassName("wordboard-letter")
+
 async function init() {
     /**
      * Define following variables:
@@ -8,6 +11,8 @@ async function init() {
      * - answerLength
      * - done
      */
+
+    
 
     /**
      * Make API call, get word of the day.
@@ -46,6 +51,11 @@ async function init() {
      * - is the key a valid letter
      * - otherwise...
      */
+
+    document.addEventListener("keydown", function(event) {
+        const action = event.key
+        console.log(action)
+    })
 }
 
 function isLetter(action) {
@@ -55,3 +65,6 @@ function isLetter(action) {
 function makeMap(array) {
     // Create object of characters along with amount of occurrences in word.
 }
+
+
+init()
