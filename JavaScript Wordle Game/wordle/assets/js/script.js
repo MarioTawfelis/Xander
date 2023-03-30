@@ -28,6 +28,7 @@ async function init() {
     const res = await fetch(url)
     const data = await res.json()
     let wordOfTheDay = data.word.toUpperCase()
+    let wordParts = wordOfTheDay.split('')
 
     function addLetter(letter) {
         // check if buffer is less than 5 characters
@@ -48,14 +49,38 @@ async function init() {
 
         if (currentGuess.length !== ANSWER_LENGTH) return
 
+        // Make map of words
+        let guessParts = currentGuess.split('')
+
         // Mark 'correct', 'close', 'wrong' squares
+        for (let i=0; i<ANSWER_LENGTH; i++) {
+            if (guessParts[i] === wordParts[i])  {
+                letters[currentRow * ANSWER_LENGTH + i].classList.add('correct')
+            } else if (wordParts.includes(guessParts[i])) {
+                letters[currentRow * ANSWER_LENGTH + i].classList.add('close')
+            } else {
+                letters[currentRow * ANSWER_LENGTH + i].classList.add('wrong')
+            }
+        }
+
+        // for (let i=0; i<ANSWER_LENGTH; i++) {
+        //     if (guessParts[i] === wordParts[i])  {
+        //         //letters[currentRow * ANSWER_LENGTH + i].classList.add('correct')
+        //     } else if (wordParts.includes(guessParts[i])) {
+        //         letters[currentRow * ANSWER_LENGTH + i].classList.add('close')
+        //     } else {
+        //         letters[currentRow * ANSWER_LENGTH + i].classList.add('wrong')
+        //     }
+        // }
+
+        
 
         // Did the user win or lose?
 
         // set currentGuess to empty string
-        // increment currentRow
-
         currentGuess = ''
+
+        // increment currentRow
         currentRow++
 
         
@@ -67,7 +92,7 @@ async function init() {
         currentGuess = 
             currentGuess.substring(0, currentGuess.length -1)
 
-        letters[currentGuess.length].textContent = ''
+        letters[currentRow * ANSWER_LENGTH + currentGuess.length].textContent = ''
 
     }
 
