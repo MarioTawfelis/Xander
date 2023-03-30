@@ -8,9 +8,14 @@ async function init() {
      * Define following variables:
      * - currentGuess
      * - currentRow
-     * - answerLength
+     * - ANSWER_LENGTH
      * - done
      */
+
+    let currentGuess = ''
+    let currentRow = 0
+    const ANSWER_LENGTH = 5
+    let done = false
 
     
 
@@ -25,10 +30,19 @@ async function init() {
             // if so, add letter
             // if not, replace last letter with new letter
 
+        if (currentGuess.length < ANSWER_LENGTH) {
+            currentGuess += letter
+        } else {
+            currentGuess = currentGuess.substring(0, currentGuess.length -1) + letter
+        }
+
+        letters[currentGuess.length -1].textContent = letter
     }
 
     function handleCommit(){
-        // If word doesn't contain 5 letters...
+        // If word doesn't contain 5 letters, do nothing.
+
+        if (currentGuess.length !== ANSWER_LENGTH) return
 
         // Mark 'correct', 'close', 'wrong' squares
 
@@ -36,10 +50,18 @@ async function init() {
 
         // set currentGuess to empty string
         // increment currentRow
+
+        
+
     }
 
     function handleBackspace() {
         // Modify currentGuess and update DOM
+        currentGuess = 
+            currentGuess.substring(0, currentGuess.length -1)
+
+        letters[currentGuess.length].textContent = ''
+
     }
 
 
@@ -67,7 +89,7 @@ async function init() {
 
 function isLetter(action) {
     // Check if keystroke is indeed a letter
-    return /^[a-zA-Z]/.test(action)
+    return /^[a-zA-Z]$/.test(action)
 }
 
 function makeMap(array) {
