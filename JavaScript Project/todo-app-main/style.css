@@ -120,23 +120,26 @@ header {
 /* Taskbar container */
 #taskbar {
     display: grid;
+    grid-template-rows: repeat(2,1fr);
     grid-template-columns: repeat(3,1fr);
 }
 
 /* Items left counter */
 .items-counter {
+    grid-row: 2/3;
     grid-column: 1/2;
 }
 
 /* Filters */
-
 #filter {
+    grid-row: 1/2;
     grid-column: 2/3;
     display: flex;
 }
 
 /* Clear completed tasts */
 .clear {
+    grid-row: 2/3;
     grid-column: 3/4;
 }
 
