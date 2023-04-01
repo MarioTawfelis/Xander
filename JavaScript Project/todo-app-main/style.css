@@ -1,0 +1,147 @@
+
+/* Google font Import */
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+/******************************************************/
+
+/* Variables */
+:root {
+    /* Primary */
+    --bright-blue: hsl(220, 98%, 61%);
+    --check-bg: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+
+    /* Neutral */
+    /* Light Theme */
+    --light-gray: hsl(0, 0%, 98%);
+    --light-grayishblue1: hsl(236, 33%, 92%);
+    --light-grayishblue2: hsl(233, 11%, 84%);
+    --grayishblue: hsl(236, 9%, 61%);
+    --dark-grayishblue-lm: hsl(235, 19%, 35%);
+
+    --font-size: 18px;
+    --font-family: "Josefin Sans", sans-serif;
+
+
+/* Dark Theme */
+
+    --dark-blue: hsl(235, 21%, 11%);
+    --dark-desaturatedblue: hsl(235, 24%, 19%);
+    --light-grayishblue-dm: hsl(234, 39%, 85%);
+    --hover: hsl(236, 33%, 92%);
+    --dark-grayishblue-dm1: hsl(234, 11%, 52%);
+    --dark-grayishblue-dm2: hsl(233, 14%, 35%);
+    --dark-grayishblue-dm3: hsl(237, 14%, 26%);
+}
+/******************************************************/
+
+/* Base */
+/* Ref - Border box model: https://css-tricks.com/box-sizing/ */
+html,
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.center-text {
+    text-align: center;
+}
+
+/******************************************************/
+
+/* Header */
+header {
+    min-height: 10rem;
+    background-image: url(./images/bg-mobile-light.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#hero {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+}
+
+#hero h1 {
+    color: var(--light-gray);
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+}
+
+
+/* Theme toggle Button */
+#theme-toggle-btn {
+    outline: transparent;
+    border: none;
+    width: 1.625rem;
+    height: 1.625rem;
+    background-image: url(images/icon-moon.svg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.25rem;
+}
+
+/******************************************************/
+
+/* Todo List Container */
+#todo-list{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+}
+
+/* Taskbar container */
+#taskbar {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+/* Items left counter */
+.items-counter {
+    grid-column: 1/2;
+}
+
+/* Filters */
+
+#filter {
+    grid-column: 2/3;
+    display: flex;
+}
+
+/* Clear completed tasts */
+.clear {
+    grid-column: 3/4;
+}
+
+
+
+
+
+

@@ -3,34 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <link rel="stylesheet" href="style.css"/>
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
-  <title>Frontend Mentor | Todo app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <title>My Todo List</title>
 </head>
 <body>
+  <header>
+    <div id="hero">
+      <h1>Todo</h1>
+      <button class="btn theme-toggle" aria-label="Toggle dark/light theme button"></button>
+    </div>
+  </header> 
 
-  Todo
+  <form id="add-new">
+    <button type="submit" class="btn add-new" aria-label="Create new button"></button>
+    <input type="text" class="add-new-text"
+      placeholder="Create a new todo..." aria-label="Create a new todo">
+  </form>
 
-  <!-- Add dynamic number --> items left
+  <div id="todo-list">
+    <div id="tasks"></div>
 
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    <div id="taskbar">
+      <p class="items-counter"><span>0</span> items left</p>
+  
+      <div id="filter">
+        <button class="btn filter-all" aria-label="Filter all button">All</button>
+        <button class="btn filter-active" aria-label="Filter active button">Active</button>
+        <button class="btn filter-completed" aria-label="Filter completed button">Completed</button>
+      </div>
+  
+      <button class="btn clear">Clear Completed</button>
+    </div>
   </div>
+
+  <footer>
+    <p id="drag-drop-text"><p>Drag and drop to reorder list</p></p>
+  </footer>
+  
 </body>
 </html>
