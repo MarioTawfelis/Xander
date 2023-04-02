@@ -17,13 +17,31 @@
   </header> 
 
   <form id="add-new">
-    <button type="submit" class="btn add-new" aria-label="Create new button"></button>
+    <button type="submit" class="btn add-new" aria-label="Create new button">
+      <span class="custom_checkbox">+</span>
+    </button>
     <input type="text" class="add-new-text"
       placeholder="Create a new todo..." aria-label="Create a new todo">
   </form>
 
   <div id="todo-list">
-    <div id="tasks"></div>
+
+    <template>
+      <ul class="tasks">
+        <li class="task">
+          <input class="task-text" type="checkbox" />
+
+          <label>
+            <span class="custom_checkbox"></span>
+          </label>
+
+          <span class="btn delete-task">
+            <img class="delete" src="./images/icon-cross.svg" />
+          </span>
+        </li>
+      </ul>
+    </template>
+
 
     <div id="taskbar">
       <p class="items-counter"><span>0</span> items left</p>
