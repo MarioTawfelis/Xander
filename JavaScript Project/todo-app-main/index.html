@@ -26,22 +26,7 @@
 
   <div id="todo-list">
 
-    <template>
-      <ul class="tasks">
-        <li class="task">
-          <input class="task-text" type="checkbox" />
-
-          <label>
-            <span class="custom_checkbox"></span>
-          </label>
-
-          <span class="btn delete-task">
-            <img class="delete" src="./images/icon-cross.svg" />
-          </span>
-        </li>
-      </ul>
-    </template>
-
+    <ul class="tasks"></ul>
 
     <div id="taskbar">
       <p class="items-counter"><span>0</span> items left</p>
@@ -59,6 +44,22 @@
   <footer>
     <p id="drag-drop-text"><p>Drag and drop to reorder list</p></p>
   </footer>
+
+  <template id="task-template">
+    <li class="task">
+      <label>
+        <span class="checkbox"></span>
+      </label>
+
+      <input class="task-text" type="checkbox" />
+
+      <span class="btn delete-task">
+        <img class="delete" src="./images/icon-cross.svg" />
+      </span>
+    </li>
+  </template>
+
   
 </body>
+<script src="./script.js"></script>
 </html>

@@ -1,12 +1,18 @@
-const addNewForm = document.getElementById("add-new") //New todo form
-const newTaskText = document.getElementsByClassName("add-new-text") //New todo text
-const tasksTemplate = document.getElementById("tasks") //Tasts template
+const addNewForm = document.querySelector("#add-new") //New todo form
+const newTaskText = document.querySelector(".add-new-text") //New todo text
 
-const filterAll = document.getElementsByClassName("filter-all") //Filter - all tasks button
-const filterActive = document.getElementsByClassName("filter-active") //Filter - active tasks button
-const filterComplete = document.getElementsByClassName("filter-completed") // Filter - completed tasks button
+const taskTemplate = document.querySelector("#task-template") //Task template
+const tasksContainer = document.querySelector(".tasks") // Tasks UL
 
-const clearCompleted = document.getElementsByClassName("clear") //Clear completed tasks button
+const filterAll = document.querySelector(".filter-all") //Filter - all tasks button
+const filterActive = document.querySelector(".filter-active") //Filter - active tasks button
+const filterComplete = document.querySelector(".filter-completed") // Filter - completed tasks button
+
+const clearCompleted = document.querySelector(".clear") //Clear completed tasks button
+
+
+
+const LOCAL_STORAGE_LIST = 'task.todos';
 
 let todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST)) || [
     {
@@ -44,13 +50,28 @@ let todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST)) || [
   const displayTasks = () => {
     todos.forEach(todo => {
         //Clone tasks template
-        const tasksList = document.importNode(tasksTemplate.content, True)
+        const tasksList = document.importNode(taskTemplate.content, true)
+
         // Get checkbox
-        // const checkbox = tasksList
+        const checkbox = tasksList.querySelector("input")
+        checkbox.checked = todo.completed
 
         // Add task text
+        const text = tasksList.querySelector("label")
+        text.append(todo.name)
+
+
         // Add X button to delete
+        const deleteBtn = tasksList.querySelector("img")
+
+        tasksContainer.appendChild(tasksList)
     });
   }
 
-  displayTasks()
+
+  function init() {
+    displayTasks()
+  }
+
+  init()
+
