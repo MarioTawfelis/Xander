@@ -189,6 +189,64 @@ const saveLocal = () => {
     localStorage.setItem(LOCAL_STORAGE_LIST, JSON.stringify(todos))
 }
 
+// Filters tasks based on task status
+const filterTasks = event => {
+    //Clear tasks template
+    clearTemplate(tasksContainer)
+
+    if(event.target === filterAll){
+        //Display tasks
+        displayTasks()
+    } else if(event.target === filterActive) {
+        todos.forEach(todo => {
+            if(!todo.completed) {
+                //Clone tasks template
+                const tasksList = document.importNode(taskTemplate.content, true)
+
+                // Get checkbox
+                const checkbox = tasksList.querySelector("input")
+                checkbox.checked = todo.completed
+                checkbox.id = todo.id
+
+                // Add task text
+                const text = tasksList.querySelector("label")
+                text.append(todo.name)
+                text.htmlFor = todo.id
+
+                // Add X button to delete
+                const deleteBtn = tasksList.querySelector("img")
+                deleteBtn.id = todo.id
+
+                tasksContainer.appendChild(tasksList)
+            }
+        })
+        
+    } else if(event.target === filterComplete) {
+        todos.forEach(todo => {
+            if(todo.completed) {
+                //Clone tasks template
+                const tasksList = document.importNode(taskTemplate.content, true)
+
+                // Get checkbox
+                const checkbox = tasksList.querySelector("input")
+                checkbox.checked = todo.completed
+                checkbox.id = todo.id
+
+                // Add task text
+                const text = tasksList.querySelector("label")
+                text.append(todo.name)
+                text.htmlFor = todo.id
+
+                // Add X button to delete
+                const deleteBtn = tasksList.querySelector("img")
+                deleteBtn.id = todo.id
+
+                tasksContainer.appendChild(tasksList)
+            }
+        })
+    }
+}
+
 function init() {
     clearTemplate(tasksContainer)
     updateCounter()
@@ -196,12 +254,14 @@ function init() {
     displayTasks()
 }
 
-
 // Event listeners
 addNewForm.addEventListener('submit', storeTask)
 tasksContainer.addEventListener('click', deleteTask)
 tasksContainer.addEventListener('click', setComplete)
 clearCompleted.addEventListener('click', clearCompletedTasks)
+filterAll.addEventListener('click', filterTasks)
+filterActive.addEventListener('click', filterTasks)
+filterComplete.addEventListener('click', filterTasks)
 
 init()
 
