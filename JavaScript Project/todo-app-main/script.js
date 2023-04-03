@@ -8,6 +8,7 @@ const filterAll = document.querySelector(".filter-all") //Filter - all tasks but
 const filterActive = document.querySelector(".filter-active") //Filter - active tasks button
 const filterComplete = document.querySelector(".filter-completed") // Filter - completed tasks button
 
+const tasksCounter = document.querySelector(".items-counter") //Tasks counter
 const clearCompleted = document.querySelector(".clear") //Clear completed tasks button
 
 const LOCAL_STORAGE_LIST = 'task.todos';
@@ -159,6 +160,9 @@ const setComplete = event => {
     //Store the updated list locally
     saveLocal()
 
+    //Update counter
+    updateCounter()
+
     //Display tasks
     displayTasks()
 
@@ -171,6 +175,15 @@ const setComplete = event => {
     // }
 }
 
+// Updates the tasks counter
+const updateCounter = () => {
+    //Get incomplete tasks
+    const incompleteTasks = todos.filter(task => !task.completed)
+
+    //Update counter based on incomplete tasks
+    tasksCounter.querySelector("span").textContent = incompleteTasks.length
+}
+
 // Store tasks locally
 const saveLocal = () => {
     localStorage.setItem(LOCAL_STORAGE_LIST, JSON.stringify(todos))
@@ -178,8 +191,9 @@ const saveLocal = () => {
 
 function init() {
     clearTemplate(tasksContainer)
-    displayTasks()
+    updateCounter()
     saveLocal()
+    displayTasks()
 }
 
 
