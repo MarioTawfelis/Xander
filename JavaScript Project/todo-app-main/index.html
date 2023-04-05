@@ -15,35 +15,39 @@
       <button class="btn theme-toggle" aria-label="Toggle dark/light theme button"></button>
     </div>
   </header> 
-
-  <form id="add-new">
-    <button type="submit" class="btn add-new" aria-label="Create new button">
-      <span class="custom_checkbox">+</span>
-    </button>
-    <input type="text" class="add-new-text"
-      placeholder="Create a new todo..." aria-label="Create a new todo">
-  </form>
-
-  <div id="todo-list">
-
-    <ul class="tasks"></ul>
-
-    <div id="taskbar">
-      <p class="items-counter"><span>0</span> items left</p>
+  <main>
+    <form id="add-new">
+      <button type="submit" class="btn add-new" aria-label="Create new button">
+        <span class="custom_checkbox">+</span>
+      </button>
+      <input type="text" class="add-new-text"
+        placeholder="Create a new todo..." aria-label="Create a new todo">
+    </form>
   
-      <div id="filter">
-        <button class="btn filter-all" aria-label="Filter all button">All</button>
-        <button class="btn filter-active" aria-label="Filter active button">Active</button>
-        <button class="btn filter-completed" aria-label="Filter completed button">Completed</button>
+    <div id="todo-list">
+      <div id="todo-content">
+        <ul class="tasks"></ul>
       </div>
+      
   
-      <button class="btn clear">Clear Completed</button>
+      <div id="taskbar">
+        <p class="items-counter"><span>0</span> items left</p>
+    
+        <div id="filter">
+          <button class="btn filter-all" aria-label="Filter all button">All</button>
+          <button class="btn filter-active" aria-label="Filter active button">Active</button>
+          <button class="btn filter-completed" aria-label="Filter completed button">Completed</button>
+        </div>
+    
+        <button class="btn clear">Clear Completed</button>
+      </div>
     </div>
-  </div>
+  
+    <footer>
+      <p id="drag-drop-text"><p>Drag and drop to reorder list</p></p>
+    </footer>
 
-  <footer>
-    <p id="drag-drop-text"><p>Drag and drop to reorder list</p></p>
-  </footer>
+  </main>
 
   <template id="task-template">
     <li class="task">
